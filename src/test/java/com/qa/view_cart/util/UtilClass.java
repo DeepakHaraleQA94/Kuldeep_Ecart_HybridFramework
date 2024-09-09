@@ -23,6 +23,7 @@ public class UtilClass extends TestBase {
 	
 	public void SignInPageFunctinality() throws IOException {
 	    signIn = new SignInPage();
+	   
 		signIn.openSignInPage();
 		signIn.enterEmail(prop.getProperty("uname"));
 		signIn.enterPass(prop.getProperty("pass"));
