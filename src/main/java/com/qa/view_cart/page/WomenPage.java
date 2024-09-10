@@ -20,7 +20,7 @@ public class WomenPage extends TestBase
 	@FindBy(linkText  ="Women")
 	WebElement womenButton;
 	
-	@FindBy(xpath="//*[@id=\"center_column\"]/ul/li[5]/div/div[1]/div/a[1]/img")
+	@FindBy(xpath="(//img[@title='Printed Summer Dress'])[2]")
 	WebElement prinntedDress;
 	
 	@FindBy(id ="group_1")
