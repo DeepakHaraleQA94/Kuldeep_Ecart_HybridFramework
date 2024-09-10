@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import com.qa.view_cart.TestBase.TestBase;
@@ -49,7 +49,7 @@ public class UtilClass extends TestBase {
 	
 
 	TestBase testbase;
-	ExtentSparkRepoter  htmlReporter;
+	ExtentSparkReporter htmlReporter;
 	ExtentReports reports;
 	ExtentTest test;
 	
