@@ -11,7 +11,6 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
-import com.aventstack.extentreports.configuration.Config;
 
 public class TestBase {
 	public static Properties prop;
