@@ -48,33 +48,6 @@ public class UtilClass extends TestBase {
 	
 	
 
-	TestBase testbase;
-	ExtentSparkReporter htmlReporter;
-	ExtentReports reports;
-	ExtentTest test;
-	
-	public void configureReport()
-	{
-		
-		String timestamp = new SimpleDateFormat("yyyy.mm.dd.hh.mm.ss").format(new Date());
-		String reportName = "MyStoreTestReport-" + timestamp + ".html";
-		htmlReporter = new ExtentSparkReporter(System.getProperty("user.dir") + "//Reports//" + reportName);
-		reports = new ExtentReports();
-		reports.attachReporter(htmlReporter);
-		
-		//add system information/environment info to reports
-		reports.setSystemInfo("Machine:", "testpc1");
-		reports.setSystemInfo("OS", "windows 11");
-//		reports.setSystemInfo("browser:", testbase.Initilization());
-		reports.setSystemInfo("user name:", "Prachi");
-		
-		//configuration to change look and feel of report
-		htmlReporter.config().setDocumentTitle("Extent Listener Report Demo");
-		htmlReporter.config().setReportName("This is my First Report");
-		htmlReporter.config().setTheme(Theme.STANDARD);
-		
-		
-	}
 
 	
 	

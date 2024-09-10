@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite" >
+<listeners>
+<listener class-name="com.qa.view_cart.util.testListner"></listener>
+</listeners>
+  <test  name="Test">
+    <classes>
+      <class name="com.qa.view_cart.TestPage.HomeTestPage"/>
+      <class name="com.qa.view_cart.TestPage.SignUpTestPage"/>
+      <class name="com.qa.view_cart.TestPage.WomanTestPage"/>
+      <class name="com.qa.view_cart.TestPage.SignInTestPage"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
