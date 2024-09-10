@@ -40,9 +40,9 @@ public class WomanTestPage extends TestBase{
 	}
 	
 	
-	@AfterMethod
-	public void tearDown() {
-		driver.close();
-		driver.quit();
-	}
+//	@AfterMethod
+//	public void tearDown() {
+//		driver.close();
+//		driver.quit();
+//	}
 }
