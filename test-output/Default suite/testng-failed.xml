@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.view_cart.TestPage.WomanTestPage">
+      <class name="com.qa.view_cart.util.UtilClass">
         <methods>
-          <include name="setup"/>
-          <include name="validateWomenFunctionality"/>
+          <include name="getDataFromExcel"/>
         </methods>
-      </class> <!-- com.qa.view_cart.TestPage.WomanTestPage -->
+      </class> <!-- com.qa.view_cart.util.UtilClass -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

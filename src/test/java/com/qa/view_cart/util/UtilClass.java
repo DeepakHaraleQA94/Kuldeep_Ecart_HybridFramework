@@ -1,11 +1,15 @@
 package com.qa.view_cart.util;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.Test;
@@ -67,5 +71,32 @@ public class UtilClass extends TestBase {
 
 			return dest;
 		}	
+		
+		
+		
+//		######################################### Data Provider################################
+		@Test
+	
+		public void getDataFromExcel() throws IOException {
+			String path1 = System.getProperty("user.dir");
+//			System.out.println(path1);
+			String path2 = "\\src\\main\\java\\com\\qa\\view_cart\\datasheet\\login.xlsx";
+//			FileInputStream excelPath = new FileInputStream(path1+path2);
+			FileInputStream excelpath = new FileInputStream("C:\\ATT\\All Repository\\TDDFrameWork-Ali\\src\\main\\java\\com\\jala\\qa\\testdata\\Excel.xlsx");
+			
+			XSSFWorkbook actionOnExcel = new XSSFWorkbook(excelpath);
+			XSSFSheet excelNo = actionOnExcel.getSheet("Sheet1");
+			
+			Object data[][]= new Object[excelNo.getLastRowNum()][excelNo.getRow(0).getLastCellNum()];
+			for(int i=1;i<excelNo.getLastRowNum();i++) {
+				for(int j=0;j<excelNo.getRow(0).getLastCellNum();j++) {
+					System.out.println(excelNo.getRow(i).getCell(j).getStringCellValue());
+//					data[i][j] = excelNo.getRow(i).getCell(j).getStringCellValue();
+				}
+			
+			}
+		}
+		
+		
 	
 }
