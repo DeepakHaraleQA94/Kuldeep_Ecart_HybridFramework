@@ -112,14 +112,26 @@ public class SignUpPage extends TestBase {
 			 pwd.sendKeys(pass);
 		 }
 		 
-		 public void DOB(int days, int months, int years)
+		 public void DOB1(int days)
 		 {
 			 Select select = new Select(day);
 			 select.selectByIndex(days);
+			
+		 }
+		 
+		 public void DOB2(int months)
+		 {
+			 
 			 Select select1 = new Select(month);
-			 select.selectByIndex(months);
+			 select1.selectByIndex(months);
+		 }
+		 
+		 public void DOB3(int years)
+		 {
+			 
+			 
 			 Select select2 = new Select(year);
-			 select.selectByIndex(years);
+			 select2.selectByIndex(years);
 		 }
 
 		public void clickOnsubmit() {

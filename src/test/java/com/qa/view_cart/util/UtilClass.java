@@ -12,6 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -48,55 +49,81 @@ public class UtilClass extends TestBase {
 	}
 	
 	
-//	########################### extent Report #######################################
+//	########################### get screenshot  #######################################
 	
 	
-
+	public static String getScreenshot(WebDriver driver, String screenshotName) throws IOException{
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot ts = (TakesScreenshot) driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		// after execution, you could see a folder "FailedTestsScreenshots"
+		// under src folder
+		String destination = System.getProperty("user.dir") + "\\FailedTestsScreenshots\\" + screenshotName + dateName
+				+ ".png";
+		File finalDestination = new File(destination);
+		FileUtils.copyFile(source, finalDestination);
+		return destination;
+	}
 
 	
 	
-//	############################# user method to capture screen shot #####################################
-		public File captureScreenShot(String testName) throws IOException {
-			// step1: convert webdriver object to TakesScreenshot interface
-			TakesScreenshot screenshot = ((TakesScreenshot) driver);
-
-			// step2: call getScreenshotAs method to create image file
-
-			File src = screenshot.getScreenshotAs(OutputType.FILE);
-
-			File dest = new File(System.getProperty("user.dir") + "\\listner\\" + testName + ".png");
-
-			// step3: copy image file to destination
-			FileUtils.copyFile(src, dest);
-
-			return dest;
-		}	
+//	############################# Use method for capture screen shot #####################################
+public static String takeScreenshot(String testName) {
+		
+		File sourceScreenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File destinationScreenshotFile = new File(System.getProperty("user.dir")+"\\Screenshots\\"+testName+".png");
+		try {
+			FileUtils.copyFile(sourceScreenshotFile, destinationScreenshotFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return destinationScreenshotFile.getAbsolutePath();
+	
+	}
 		
 		
 		
 //		######################################### Data Provider################################
-		@Test
+		
 	
-		public void getDataFromExcel() throws IOException {
+		public Object[][] getDataFromExcel(String path, String excelName) throws IOException {
 			String path1 = System.getProperty("user.dir");
-//			System.out.println(path1);
+
 			String path2 = "\\src\\main\\java\\com\\qa\\view_cart\\datasheet\\login.xlsx";
-//			FileInputStream excelPath = new FileInputStream(path1+path2);
-			FileInputStream excelpath = new FileInputStream("C:\\ATT\\All Repository\\TDDFrameWork-Ali\\src\\main\\java\\com\\jala\\qa\\testdata\\Excel.xlsx");
+			FileInputStream excelPath = new FileInputStream(path);
+
 			
-			XSSFWorkbook actionOnExcel = new XSSFWorkbook(excelpath);
-			XSSFSheet excelNo = actionOnExcel.getSheet("Sheet1");
+			XSSFWorkbook actionOnExcel = new XSSFWorkbook(excelPath);
+			XSSFSheet excelNo = actionOnExcel.getSheet(excelName);
 			
 			Object data[][]= new Object[excelNo.getLastRowNum()][excelNo.getRow(0).getLastCellNum()];
 			for(int i=1;i<excelNo.getLastRowNum();i++) {
-				for(int j=0;j<excelNo.getRow(0).getLastCellNum();j++) {
+				for(int j=0;j<excelNo.getRow(1).getLastCellNum();j++) {
 					System.out.println(excelNo.getRow(i).getCell(j).getStringCellValue());
-//					data[i][j] = excelNo.getRow(i).getCell(j).getStringCellValue();
+					data[i][j] = excelNo.getRow(i).getCell(j).getStringCellValue();
 				}
 			
 			}
+			return data;
 		}
 		
 		
-	
+
+//		###################### extent report ######################
+		
+		public static ExtentReports getExtentReport() {
+			
+			ExtentReports report = new ExtentReports();
+			
+			File extentReportFile = new File(System.getProperty("user.dir")+"\\ExtentReports\\eReport.html");
+			
+			ExtentSparkReporter sparkReporter = new ExtentSparkReporter(extentReportFile);
+			
+			report.attachReporter(sparkReporter);
+			
+			return report;
+			
+		}
 }
