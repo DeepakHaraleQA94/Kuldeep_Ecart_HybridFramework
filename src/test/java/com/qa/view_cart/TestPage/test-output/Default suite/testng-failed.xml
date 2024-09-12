@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.qa.view_cart.util.UtilClass">
+      <class name="com.qa.view_cart.TestPage.SignUpTestPage">
         <methods>
-          <include name="getDataFromExcel"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="validateSignUpPage"/>
         </methods>
-      </class> <!-- com.qa.view_cart.util.UtilClass -->
+      </class> <!-- com.qa.view_cart.TestPage.SignUpTestPage -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
